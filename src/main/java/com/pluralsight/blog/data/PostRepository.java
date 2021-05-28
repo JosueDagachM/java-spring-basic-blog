@@ -3,6 +3,8 @@ package com.pluralsight.blog.data;
 import com.pluralsight.blog.model.Post;
 import org.springframework.stereotype.Component;
 
+import static org.mockito.Mockito.inOrder;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Date;
@@ -49,6 +51,10 @@ public class PostRepository {
     }
 
     public Post findById(Long id) {
+        for(Post post : ALL_POSTS) {
+            if(post.getId() == id)
+                return post;
+        }
         return null;
     }
 }
